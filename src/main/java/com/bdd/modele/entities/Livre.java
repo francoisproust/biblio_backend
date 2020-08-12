@@ -1,6 +1,9 @@
-package com.bdd.entities;
+package com.bdd.modele.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Set;
 
 @Entity
@@ -15,13 +18,14 @@ public class Livre {
     @Column (name = "auteur",nullable = false,length = 255)
     private String auteur;
     @Column (name = "isbn",nullable = false,length = 13)
-    private Integer isbn;
+    private BigInteger isbn;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "ouvrage_id")
-    private Ouvrage ouvrageId;
+    private Ouvrage ouvrage;
 
-    @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
     private Set<Emprunt> emprunts;
 
     public Integer getLivreId() {
@@ -48,19 +52,27 @@ public class Livre {
         this.auteur = auteur;
     }
 
-    public Integer getIsbn() {
+    public BigInteger getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(Integer isbn) {
+    public void setIsbn(BigInteger isbn) {
         this.isbn = isbn;
     }
 
-    public Ouvrage getOuvrageId() {
-        return ouvrageId;
+    public Ouvrage getOuvrage() {
+        return ouvrage;
     }
 
-    public void setOuvrageId(Ouvrage ouvrageId) {
-        this.ouvrageId = ouvrageId;
+    public void setOuvrage(Ouvrage ouvrage) {
+        this.ouvrage = ouvrage;
+    }
+
+    public Set<Emprunt> getEmprunts() {
+        return emprunts;
+    }
+
+    public void setEmprunts(Set<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
 }

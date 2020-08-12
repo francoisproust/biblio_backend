@@ -1,4 +1,4 @@
-package com.bdd.entities;
+package com.bdd.modele.entities;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,6 +15,7 @@ public class TypeUser {
 
     @OneToMany(mappedBy = "typeUser", cascade = CascadeType.ALL)
     private Set<Usager> usagers;
+
 
     public Integer getTypeId() {
         return typeId;

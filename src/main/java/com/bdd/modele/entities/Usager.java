@@ -1,4 +1,4 @@
-package com.bdd.entities;
+package com.bdd.modele.entities;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class Usager {
     @JoinColumn(name = "type_id")
     private TypeUser typeUser;
 
-    @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usager", cascade = CascadeType.ALL)
     private Set<Emprunt> emprunts;
 
     public Integer getUsagerId() {

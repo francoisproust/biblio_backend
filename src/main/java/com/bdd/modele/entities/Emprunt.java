@@ -1,4 +1,6 @@
-package com.bdd.entities;
+package com.bdd.modele.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,12 +22,14 @@ public class Emprunt {
     private String etat;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "livre_id")
-    private Livre livreId;
+    private Livre livre;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "usager_id")
-    private Usager usagerId;
+    private Usager usager;
 
     public Integer getEmpruntId() {
         return empruntId;
@@ -67,19 +71,19 @@ public class Emprunt {
         this.etat = etat;
     }
 
-    public Livre getLivreId() {
-        return livreId;
+    public Livre getLivre() {
+        return livre;
     }
 
-    public void setLivreId(Livre livreId) {
-        this.livreId = livreId;
+    public void setLivre(Livre livre) {
+        this.livre = livre;
     }
 
-    public Usager getUsagerId() {
-        return usagerId;
+    public Usager getUsager() {
+        return usager;
     }
 
-    public void setUsagerId(Usager usagerId) {
-        this.usagerId = usagerId;
+    public void setUsager(Usager usager) {
+        this.usager = usager;
     }
 }

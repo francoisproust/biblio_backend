@@ -1,4 +1,4 @@
-package com.bdd.entities;
+package com.bdd.modele.entities;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,7 +13,7 @@ public class Ouvrage {
     @Column (name = "nom",nullable = false,length = 255)
     private String nom;
 
-    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
     private Set<Livre> livres;
 
     public Integer getOuvrageId() {
