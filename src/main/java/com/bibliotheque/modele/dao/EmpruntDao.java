@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EmpruntDao extends JpaRepository<Emprunt,Integer> {
     List<Emprunt> findAll();
+    Emprunt findByEmpruntId(Integer emprunt_id);
 }

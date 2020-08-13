@@ -6,8 +6,11 @@ import com.bibliotheque.service.EmpruntService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
 
 @Service
 public class EmpruntServiceImpl implements EmpruntService {
@@ -29,5 +32,18 @@ public class EmpruntServiceImpl implements EmpruntService {
             }
         }
         return empruntEnCours;
+    }
+
+    @Override
+    public Emprunt prolongerEmprunt(Integer emprunt_id) {
+        Emprunt emprunt = new Emprunt();
+        emprunt = empruntDao.findByEmpruntId(emprunt_id);
+        if (!emprunt.getProlongation()){
+            emprunt.setProlongation(true);
+            emprunt.setDateDebut(Date.valueOf(LocalDate.now()));
+            emprunt.setDateFin(Date.valueOf(  LocalDate.now().plusDays(28)));
+            empruntDao.save(emprunt);
+        }
+        return emprunt;
     }
 }
