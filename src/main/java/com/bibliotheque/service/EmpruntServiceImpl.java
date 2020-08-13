@@ -1,7 +1,7 @@
-package com.bdd.service;
+package com.bibliotheque.service;
 
-import com.bdd.modele.dao.EmpruntDao;
-import com.bdd.modele.entities.Emprunt;
+import com.bibliotheque.modele.dao.EmpruntDao;
+import com.bibliotheque.modele.entities.Emprunt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

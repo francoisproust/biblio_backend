@@ -1,4 +1,4 @@
-package com.bdd.modele.entities;
+package com.bibliotheque.modele.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,6 +19,8 @@ public class Livre {
     private String auteur;
     @Column (name = "isbn",nullable = false,length = 13)
     private BigInteger isbn;
+    @Column(name = "disponible", nullable = false)
+    private Boolean disponible;
 
     @ManyToOne
     @JsonIgnore
@@ -28,6 +30,13 @@ public class Livre {
     @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
     private Set<Emprunt> emprunts;
 
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
     public Integer getLivreId() {
         return livreId;
     }

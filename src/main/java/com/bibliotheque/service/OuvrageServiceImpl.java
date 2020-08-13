@@ -1,7 +1,7 @@
-package com.bdd.service;
+package com.bibliotheque.service;
 
-import com.bdd.modele.dao.OuvrageDao;
-import com.bdd.modele.entities.Ouvrage;
+import com.bibliotheque.modele.dao.OuvrageDao;
+import com.bibliotheque.modele.entities.Ouvrage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

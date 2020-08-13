@@ -1,7 +1,7 @@
-package com.bdd.controleur;
+package com.bibliotheque.controleur;
 
-import com.bdd.modele.entities.Emprunt;
-import com.bdd.service.EmpruntService;
+import com.bibliotheque.modele.entities.Emprunt;
+import com.bibliotheque.service.EmpruntService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

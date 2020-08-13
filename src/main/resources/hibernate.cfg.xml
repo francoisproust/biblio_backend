@@ -13,11 +13,11 @@
 
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
-        <mapping package="com.bdd.modele.entities"/>
-        <mapping class="com.bdd.modele.entities.Usager" />
-        <mapping class="com.bdd.modele.entities.Livre" />
-        <mapping class="com.bdd.modele.entities.Ouvrage" />
-        <mapping class="com.bdd.modele.entities.Emprunt" />
-        <mapping class="com.bdd.modele.entities.TypeUser" />
+        <mapping package="com.bibliotheque.modele.entities"/>
+        <mapping class="com.bibliotheque.modele.entities.Usager" />
+        <mapping class="com.bibliotheque.modele.entities.Livre" />
+        <mapping class="com.bibliotheque.modele.entities.Ouvrage" />
+        <mapping class="com.bibliotheque.modele.entities.Emprunt" />
+        <mapping class="com.bibliotheque.modele.entities.TypeUser" />
     </session-factory>
 </hibernate-configuration>

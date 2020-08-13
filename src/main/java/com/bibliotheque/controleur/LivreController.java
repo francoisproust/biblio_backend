@@ -1,7 +1,7 @@
-package com.bdd.controleur;
+package com.bibliotheque.controleur;
 
-import com.bdd.modele.entities.Livre;
-import com.bdd.service.LivreService;
+import com.bibliotheque.modele.entities.Livre;
+import com.bibliotheque.service.LivreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

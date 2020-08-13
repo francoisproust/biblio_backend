@@ -1,4 +1,4 @@
-package com.bdd.modele.entities;
+package com.bibliotheque.modele.entities;
 
 import javax.persistence.*;
 import java.util.Set;

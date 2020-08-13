@@ -1,6 +1,6 @@
-package com.bdd.service;
+package com.bibliotheque.service;
 
-import com.bdd.modele.entities.Emprunt;
+import com.bibliotheque.modele.entities.Emprunt;
 
 import java.util.List;
 

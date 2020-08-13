@@ -1,6 +1,6 @@
-package com.bdd.modele.dao;
+package com.bibliotheque.modele.dao;
 
-import com.bdd.modele.entities.Ouvrage;
+import com.bibliotheque.modele.entities.Ouvrage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

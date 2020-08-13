@@ -1,4 +1,4 @@
-package com.bdd.modele.entities;
+package com.bibliotheque.modele.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
