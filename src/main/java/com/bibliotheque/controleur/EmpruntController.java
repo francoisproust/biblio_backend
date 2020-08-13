@@ -18,4 +18,9 @@ public class EmpruntController {
         List<Emprunt> emprunts = empruntService.listerEmprunt();
         return emprunts;
     }
+    @RequestMapping("/emprunt-en-cours")
+    public List<Emprunt> listerEmpruntEnCours(){
+        List<Emprunt> empruntEnCours = empruntService.listerEmpruntEnCours();
+        return empruntEnCours;
+    }
 }

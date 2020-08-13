@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface EmpruntService {
     List<Emprunt> listerEmprunt();
+    List<Emprunt> listerEmpruntEnCours();
 }

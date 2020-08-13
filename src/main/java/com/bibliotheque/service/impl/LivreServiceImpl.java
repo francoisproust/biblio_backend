@@ -1,7 +1,8 @@
-package com.bibliotheque.service;
+package com.bibliotheque.service.impl;
 
 import com.bibliotheque.modele.dao.LivreDao;
 import com.bibliotheque.modele.entities.Livre;
+import com.bibliotheque.service.LivreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
