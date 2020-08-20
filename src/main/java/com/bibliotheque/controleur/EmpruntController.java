@@ -33,17 +33,10 @@ public class EmpruntController {
         return empruntProlonge;
     }
 
-    @PostMapping(value = "/emprunter")
-    public ResponseEntity<Void> creerEmprunt(@RequestBody Emprunt emprunt){
-        Emprunt empruntCreer = empruntService.creerEmprunt(emprunt);
-
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(empruntCreer.getEmpruntId())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
+    @PostMapping("/emprunter/{ouvrageId}/{usagerId}")
+    public Emprunt creerEmprunt(@PathVariable("ouvrageId") Integer ouvrageId, @PathVariable("usagerId") Integer usagerId){
+        Emprunt emprunt = empruntService.creerEmprunt(ouvrageId,usagerId);
+        return emprunt;
     }
     
 }

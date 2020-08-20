@@ -8,5 +8,5 @@ public interface EmpruntService {
     List<Emprunt> listerEmprunt();
     List<Emprunt> listerEmpruntEnCours();
     Emprunt prolongerEmprunt(Integer emprunt_id);
-    Emprunt creerEmprunt(Emprunt emprunt);
+    Emprunt creerEmprunt(Integer ouvrageId,Integer usagerId);
 }

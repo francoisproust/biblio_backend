@@ -1,7 +1,13 @@
 package com.bibliotheque.service.impl;
 
 import com.bibliotheque.modele.dao.EmpruntDao;
+import com.bibliotheque.modele.dao.LivreDao;
+import com.bibliotheque.modele.dao.OuvrageDao;
+import com.bibliotheque.modele.dao.UsagerDao;
 import com.bibliotheque.modele.entities.Emprunt;
+import com.bibliotheque.modele.entities.Livre;
+import com.bibliotheque.modele.entities.Ouvrage;
+import com.bibliotheque.modele.entities.Usager;
 import com.bibliotheque.service.EmpruntService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +16,17 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpruntServiceImpl implements EmpruntService {
     @Autowired
     EmpruntDao empruntDao;
+    @Autowired
+    UsagerDao usagerDao;
+    @Autowired
+    LivreDao livreDao;
+   // OuvrageDao ouvrageDao;
     @Override
     public List<Emprunt> listerEmprunt() {
         List<Emprunt> emprunts = empruntDao.findAll();
@@ -46,18 +58,39 @@ public class EmpruntServiceImpl implements EmpruntService {
     }
 
     @Override
-    public Emprunt creerEmprunt(Emprunt emprunt) {
-        List<Emprunt> listEmprunt = empruntDao.findAll();
-        Integer idEmprunt = listEmprunt.size() + 1;
-        emprunt.setProlongation(false);
-        emprunt = creationDate(emprunt);
-        empruntDao.save(emprunt);
-        return emprunt;
+    public Emprunt creerEmprunt(Integer ouvrageId,Integer usagerId) {
+        Emprunt empruntCree = new Emprunt();
+        empruntCree.setUsager(chercherUsagerParId(usagerId));
+        empruntCree = creationDate(empruntCree);
+        empruntCree.setLivre(chercherLivreDisponibleParOuvrage(ouvrageId));
+        empruntCree.setProlongation(false);
+        empruntCree.setEtat("En cours");
+        empruntDao.save(empruntCree);
+        return empruntCree;
     }
 
     private Emprunt creationDate(Emprunt emprunt){
         emprunt.setDateDebut(Date.valueOf(LocalDate.now()));
         emprunt.setDateFin(Date.valueOf(  LocalDate.now().plusDays(28)));
         return emprunt;
+    }
+
+    private Usager chercherUsagerParId(Integer usagerId){
+        Optional<Usager> usager = usagerDao.findById(usagerId);
+        return usager.isPresent() ? usager.get() : null;
+    }
+
+    private Livre chercherLivreDisponibleParOuvrage(Integer ouvrageId){
+        Livre livreEmprunte = new Livre();
+        List<Livre> livres = livreDao.findAllByOuvrage_OuvrageId(ouvrageId);
+        for(int i=0; i<livres.size();i++){
+            if (livres.get(i).getDisponible()){
+                livreEmprunte = livres.get(i);
+                livreEmprunte.setDisponible(false);
+                break;
+            }
+        }
+        livreDao.save(livreEmprunte);
+        return livreEmprunte;
     }
 }
