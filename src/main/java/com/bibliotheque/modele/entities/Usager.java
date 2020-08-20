@@ -1,16 +1,13 @@
 package com.bibliotheque.modele.entities;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
 @Table(name="usager", schema = "public")
-public class Usager implements Serializable, UserDetails {
+public class Usager implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     @Column (name = "usager_id",nullable = false)
@@ -85,35 +82,5 @@ public class Usager implements Serializable, UserDetails {
 
     public void setEmprunts(Set<Emprunt> emprunts) {
         this.emprunts = emprunts;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

@@ -1,11 +1,12 @@
 package com.bibliotheque.modele.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name="ouvrage", schema = "public")
-public class Ouvrage {
+public class Ouvrage implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     @Column (name = "ouvrage_id",nullable = false)

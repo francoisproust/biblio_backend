@@ -8,5 +8,4 @@ import java.util.Optional;
 
 @Repository
 public interface UsagerDao extends JpaRepository<Usager, Integer> {
-    Optional<Usager> findUsagerByIdentifiant(String identifiant);
 }

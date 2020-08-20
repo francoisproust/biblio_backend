@@ -3,12 +3,13 @@ package com.bibliotheque.modele.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Set;
 
 @Entity
 @Table(name="livre", schema = "public")
-public class Livre {
+public class Livre implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     @Column (name = "livre_id",nullable = false)

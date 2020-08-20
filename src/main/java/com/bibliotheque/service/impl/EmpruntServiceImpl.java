@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
 
 @Service
 public class EmpruntServiceImpl implements EmpruntService {
@@ -40,10 +39,25 @@ public class EmpruntServiceImpl implements EmpruntService {
         emprunt = empruntDao.findByEmpruntId(emprunt_id);
         if (!emprunt.getProlongation()){
             emprunt.setProlongation(true);
-            emprunt.setDateDebut(Date.valueOf(LocalDate.now()));
-            emprunt.setDateFin(Date.valueOf(  LocalDate.now().plusDays(28)));
+            emprunt = creationDate(emprunt);
             empruntDao.save(emprunt);
         }
+        return emprunt;
+    }
+
+    @Override
+    public Emprunt creerEmprunt(Emprunt emprunt) {
+        List<Emprunt> listEmprunt = empruntDao.findAll();
+        Integer idEmprunt = listEmprunt.size() + 1;
+        emprunt.setProlongation(false);
+        emprunt = creationDate(emprunt);
+        empruntDao.save(emprunt);
+        return emprunt;
+    }
+
+    private Emprunt creationDate(Emprunt emprunt){
+        emprunt.setDateDebut(Date.valueOf(LocalDate.now()));
+        emprunt.setDateFin(Date.valueOf(  LocalDate.now().plusDays(28)));
         return emprunt;
     }
 }

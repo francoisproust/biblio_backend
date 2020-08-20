@@ -1,8 +1,7 @@
 package com.bibliotheque.service;
 
 import com.bibliotheque.modele.entities.Usager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UsagerService extends UserDetailsService {
+public interface UsagerService {
     void ajouterUsager(Usager usager);
 }
