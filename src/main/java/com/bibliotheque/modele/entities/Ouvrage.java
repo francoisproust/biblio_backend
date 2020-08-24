@@ -2,6 +2,7 @@ package com.bibliotheque.modele.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Set;
 
 @Entity
@@ -13,9 +14,14 @@ public class Ouvrage implements Serializable {
     private Integer ouvrageId;
     @Column (name = "nom",nullable = false,length = 255)
     private String nom;
+    @Column (name = "auteur",nullable = false,length = 255)
+    private String auteur;
+
+    @Column (name = "isbn",nullable = false,length = 255)
+    private BigInteger isbn;
 
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
-    private Set<Livre> livres;
+    private Set<Exemplaire> exemplaires;
 
     public Integer getOuvrageId() {
         return ouvrageId;
@@ -33,11 +39,27 @@ public class Ouvrage implements Serializable {
         this.nom = nom;
     }
 
-    public Set<Livre> getLivres() {
-        return livres;
+    public String getAuteur() {
+        return auteur;
     }
 
-    public void setLivres(Set<Livre> livres) {
-        this.livres = livres;
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
+
+    public BigInteger getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(BigInteger isbn) {
+        this.isbn = isbn;
+    }
+
+    public Set<Exemplaire> getExemplaires() {
+        return exemplaires;
+    }
+
+    public void setExemplaires(Set<Exemplaire> exemplaires) {
+        this.exemplaires = exemplaires;
     }
 }

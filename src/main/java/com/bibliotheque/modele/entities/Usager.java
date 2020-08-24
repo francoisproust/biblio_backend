@@ -20,13 +20,12 @@ public class Usager implements Serializable {
     private String identifiant;
     @Column (name = "password",nullable = false,length = 32)
     private String password;
-
     @ManyToOne
     @JoinColumn(name = "type_id")
     private TypeUser typeUser;
 
     @OneToMany(mappedBy = "usager", cascade = CascadeType.ALL)
-    private Set<Emprunt> emprunts;
+    private Set<Exemplaire> exemplaires;
 
     public Integer getUsagerId() {
         return usagerId;
@@ -76,11 +75,11 @@ public class Usager implements Serializable {
         this.typeUser = typeUser;
     }
 
-    public Set<Emprunt> getEmprunts() {
-        return emprunts;
+    public Set<Exemplaire> getExemplaires() {
+        return exemplaires;
     }
 
-    public void setEmprunts(Set<Emprunt> emprunts) {
-        this.emprunts = emprunts;
+    public void setExemplaires(Set<Exemplaire> exemplaires) {
+        this.exemplaires = exemplaires;
     }
 }

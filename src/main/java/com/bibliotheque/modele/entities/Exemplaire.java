@@ -1,5 +1,6 @@
 package com.bibliotheque.modele.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -7,37 +8,42 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="emprunt", schema = "public")
-public class Emprunt implements Serializable {
+@Table(name="exemplaire", schema = "public")
+public class Exemplaire implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
-    @Column (name = "emprunt_id",nullable = false)
-    private Integer empruntId;
+    @Column (name = "exemplaire_id",nullable = false)
+    private Integer exemplaireId;
     @Column(name = "date_debut", nullable = false)
     private Date dateDebut;
     @Column(name = "date_fin", nullable = false)
     private Date dateFin;
     @Column(name = "prolongation", nullable = false)
     private Boolean prolongation;
-    @Column(name = "etat", nullable = false, length = 32)
-    private String etat;
-
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "livre_id")
-    private Livre livre;
+    @Column(name = "disponible", nullable = false, length = 32)
+    private Boolean disponible;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "usager_id")
     private Usager usager;
 
-    public Integer getEmpruntId() {
-        return empruntId;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "ouvrage_id")
+    private Ouvrage ouvrage;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "biblio_id")
+    private Bibliotheque bibliotheque;
+
+    public Integer getExemplaireId() {
+        return exemplaireId;
     }
 
-    public void setEmpruntId(Integer empruntId) {
-        this.empruntId = empruntId;
+    public void setExemplaireId(Integer exemplaireId) {
+        this.exemplaireId = exemplaireId;
     }
 
     public Date getDateDebut() {
@@ -64,20 +70,12 @@ public class Emprunt implements Serializable {
         this.prolongation = prolongation;
     }
 
-    public String getEtat() {
-        return etat;
+    public Boolean getDisponible() {
+        return disponible;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public Livre getLivre() {
-        return livre;
-    }
-
-    public void setLivre(Livre livre) {
-        this.livre = livre;
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
     }
 
     public Usager getUsager() {
@@ -86,5 +84,21 @@ public class Emprunt implements Serializable {
 
     public void setUsager(Usager usager) {
         this.usager = usager;
+    }
+
+    public Ouvrage getOuvrage() {
+        return ouvrage;
+    }
+
+    public void setOuvrage(Ouvrage ouvrage) {
+        this.ouvrage = ouvrage;
+    }
+
+    public Bibliotheque getBibliotheque() {
+        return bibliotheque;
+    }
+
+    public void setBibliotheque(Bibliotheque bibliotheque) {
+        this.bibliotheque = bibliotheque;
     }
 }
