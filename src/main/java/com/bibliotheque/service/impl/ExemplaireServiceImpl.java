@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,11 +25,18 @@ public class ExemplaireServiceImpl implements ExemplaireService {
         return exemplaire;
     }
 
+    @Override
+    public List<Exemplaire> mesEmprunts(Integer usagerId) {
+        List<Exemplaire> exemplaires = exemplaireDao.findAllByUsager_UsagerId(usagerId);
+        return exemplaires;
+    }
+
 
     private Exemplaire chercherExemplaireParId(Integer exemplaireId){
         Optional<Exemplaire> exemplaire = exemplaireDao.findById(exemplaireId);
         return exemplaire.isPresent() ? exemplaire.get() :null ;
     }
+
 
     private Exemplaire modificationDateEtProlongation(Exemplaire exemplaire){
         exemplaire.setDateDebut(Date.valueOf(LocalDate.now()));
