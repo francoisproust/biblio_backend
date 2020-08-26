@@ -31,6 +31,12 @@ public class ExemplaireServiceImpl implements ExemplaireService {
         return exemplaires;
     }
 
+    @Override
+    public List<Exemplaire> listerEmprunts() {
+        List<Exemplaire> exemplaires = exemplaireDao.findAllByDisponibleFalse();
+        return exemplaires;
+    }
+
 
     private Exemplaire chercherExemplaireParId(Integer exemplaireId){
         Optional<Exemplaire> exemplaire = exemplaireDao.findById(exemplaireId);

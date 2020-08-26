@@ -25,4 +25,10 @@ public class ExemplaireController {
         List<Exemplaire> emprunts = exemplaireService.mesEmprunts(usagerId);
         return emprunts;
     }
+
+    @RequestMapping("/consulter-emprunts")
+    public List<Exemplaire> consulterEmprunts(){
+        List<Exemplaire> emprunts = exemplaireService.listerEmprunts();
+        return emprunts;
+    }
 }

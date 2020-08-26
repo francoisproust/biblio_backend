@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface ExemplaireDao extends JpaRepository<Exemplaire,Integer> {
     List<Exemplaire> findAllByUsager_UsagerId(Integer ouvrageId);
+    List<Exemplaire> findAllByDisponibleFalse();
 
 }
