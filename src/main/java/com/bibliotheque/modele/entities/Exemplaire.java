@@ -14,9 +14,9 @@ public class Exemplaire implements Serializable {
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     @Column (name = "exemplaire_id",nullable = false)
     private Integer exemplaireId;
-    @Column(name = "date_debut", nullable = false)
+    @Column(name = "date_debut", nullable = true)
     private Date dateDebut;
-    @Column(name = "date_fin", nullable = false)
+    @Column(name = "date_fin", nullable = true)
     private Date dateFin;
     @Column(name = "prolongation", nullable = false)
     private Boolean prolongation;

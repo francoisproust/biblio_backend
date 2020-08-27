@@ -1,5 +1,6 @@
 package com.bibliotheque.service.impl;
 
+import com.bibliotheque.modele.dao.ExemplaireDao;
 import com.bibliotheque.modele.dao.OuvrageDao;
 import com.bibliotheque.modele.entities.Ouvrage;
 import com.bibliotheque.service.OuvrageService;
@@ -12,6 +13,8 @@ import java.util.List;
 public class OuvrageServiceImpl implements OuvrageService {
     @Autowired
     OuvrageDao ouvrageDao;
+    @Autowired
+    ExemplaireDao exemplaireDao;
     @Override
     public List<Ouvrage> listerOuvrage() {
         List<Ouvrage> ouvrages = ouvrageDao.findAll();
@@ -19,8 +22,8 @@ public class OuvrageServiceImpl implements OuvrageService {
     }
 
     @Override
-    public List<Ouvrage> chercherOuvragresDispo(Integer biblioId) {
-
-        return null;
+    public Integer chercherOuvragresDispo(Integer ouvrageId) {
+        Integer nbDispo = exemplaireDao.findAllByOuvrage_OuvrageIdAndAndDisponibleTrue(ouvrageId).size();
+        return nbDispo;
     }
 }

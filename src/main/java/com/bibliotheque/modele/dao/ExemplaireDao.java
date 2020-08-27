@@ -11,5 +11,6 @@ import java.util.List;
 public interface ExemplaireDao extends JpaRepository<Exemplaire,Integer> {
     List<Exemplaire> findAllByUsager_UsagerId(Integer ouvrageId);
     List<Exemplaire> findAllByDisponibleFalse();
+    List<Exemplaire> findAllByOuvrage_OuvrageIdAndAndDisponibleTrue(Integer ouvrageId);
 
 }
