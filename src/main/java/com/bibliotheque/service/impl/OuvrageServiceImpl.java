@@ -17,4 +17,10 @@ public class OuvrageServiceImpl implements OuvrageService {
         List<Ouvrage> ouvrages = ouvrageDao.findAll();
         return ouvrages;
     }
+
+    @Override
+    public List<Ouvrage> chercherOuvragresDispo(Integer biblioId) {
+
+        return null;
+    }
 }

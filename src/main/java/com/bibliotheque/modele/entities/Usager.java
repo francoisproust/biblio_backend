@@ -1,6 +1,8 @@
 package com.bibliotheque.modele.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -21,6 +23,7 @@ public class Usager implements Serializable {
     @Column (name = "password",nullable = false,length = 32)
     private String password;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "type_id")
     private TypeUser typeUser;
 

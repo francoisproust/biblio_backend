@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface OuvrageService {
     List<Ouvrage> listerOuvrage();
+    List<Ouvrage> chercherOuvragresDispo(Integer biblioId);
 }

@@ -31,4 +31,11 @@ public class ExemplaireController {
         List<Exemplaire> emprunts = exemplaireService.listerEmprunts();
         return emprunts;
     }
+
+    @RequestMapping("/rendre-emprunt/{exemplaireId}")
+    public String rendreEmprunt(@PathVariable Integer exemplaireId){
+        exemplaireService.rendreEmprunt(exemplaireId);
+
+        return "l'exemplaire est rendu";
+    }
 }

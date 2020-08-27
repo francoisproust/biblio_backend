@@ -37,6 +37,17 @@ public class ExemplaireServiceImpl implements ExemplaireService {
         return exemplaires;
     }
 
+    @Override
+    public void rendreEmprunt(Integer exemplaireId) {
+        Exemplaire exemplaire = chercherExemplaireParId(exemplaireId);
+        exemplaire.setDisponible(true);
+        exemplaire.setProlongation(false);
+        exemplaire.setUsager(null);
+        exemplaire.setDateDebut(null);
+        exemplaire.setDateFin(null);
+        exemplaireDao.save(exemplaire);
+    }
+
 
     private Exemplaire chercherExemplaireParId(Integer exemplaireId){
         Optional<Exemplaire> exemplaire = exemplaireDao.findById(exemplaireId);

@@ -8,4 +8,5 @@ public interface ExemplaireService {
     Exemplaire prolongerEmprunt(Integer exemplaireId);
     List<Exemplaire> mesEmprunts(Integer usagerId);
     List<Exemplaire> listerEmprunts();
+    void rendreEmprunt(Integer exemplaireId);
 }
