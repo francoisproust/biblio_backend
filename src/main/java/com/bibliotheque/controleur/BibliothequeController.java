@@ -1,15 +1,10 @@
 package com.bibliotheque.controleur;
 
 import com.bibliotheque.modele.entities.Bibliotheque;
-import com.bibliotheque.modele.entities.Exemplaire;
-import com.bibliotheque.modele.entities.Ouvrage;
 import com.bibliotheque.service.BibliothequeService;
 import com.bibliotheque.service.OuvrageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

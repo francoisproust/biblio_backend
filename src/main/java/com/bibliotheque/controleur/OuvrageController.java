@@ -39,14 +39,6 @@ public class OuvrageController {
         return resultOuvrages;
     }
 
-    @PostMapping("/emprunter")
-    public Exemplaire emprunterExemplaire(){
-        Exemplaire exemplaireEmprunte = new Exemplaire();
-       // exemplaireEmprunte = ouvrageService.emprunterExemplaire(ouvrageId)
-
-        return exemplaireEmprunte;
-    }
-
     @GetMapping("/emprunt-retarder")
     public List<Exemplaire> empruntEnRetard(){
         List<Exemplaire> exemplaires = ouvrageService.listerEmpruntEnRetard();
