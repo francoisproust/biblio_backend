@@ -15,4 +15,14 @@ public class UsagerServiceImpl implements UsagerService {
     public void ajouterUsager(Usager usager) {
         usagerDao.save(usager);
     }
+
+    @Override
+    public Boolean verifierUsager(Usager usager) {
+        Usager usagerEnbase = usagerDao.findByIdentifiant(usager.getIdentifiant());
+        if (usagerEnbase.getPassword().equals(usager.getPassword())){
+            boolean usagerVerifie = true;
+        }
+            boolean usagerVerifie = false;
+        return usagerVerifie;
+    }
 }
