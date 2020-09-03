@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TypeUserDao extends JpaRepository<TypeUser,Integer> {
+    TypeUser findByTypeUserEquals(String typeUser);
 }

@@ -1,16 +1,20 @@
 package com.bibliotheque.controleur;
 
+import com.bibliotheque.modele.entities.TypeUser;
 import com.bibliotheque.modele.entities.Usager;
+import com.bibliotheque.service.TypeUserService;
 import com.bibliotheque.service.UsagerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UsagerController {
     @Autowired
     UsagerService usagerService;
+    @Autowired
+    TypeUserService typeUserService;
 
     @PostMapping("/login")
     public boolean verifierConnexion(@PathVariable Usager usager){
@@ -18,4 +22,15 @@ public class UsagerController {
         return loginRetour;
     }
 
+    @PostMapping("/creation-compte")
+    public void creationCompte(@RequestBody Usager usager){
+        usager.setTypeUser(typeUserService.chercherUserLecteur());
+        usagerService.ajouterUsager(usager);
+    }
+
+    @GetMapping("/lister-usager")
+    public List<Usager> listerUsager(){
+        List<Usager> listeUsager = usagerService.listerUsager();
+        return listeUsager;
+    }
 }

@@ -6,6 +6,8 @@ import com.bibliotheque.service.UsagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UsagerServiceImpl implements UsagerService {
@@ -24,5 +26,11 @@ public class UsagerServiceImpl implements UsagerService {
         }
             boolean usagerVerifie = false;
         return usagerVerifie;
+    }
+
+    @Override
+    public List<Usager> listerUsager() {
+        List<Usager> listeUsager = usagerDao.findAll();
+        return listeUsager;
     }
 }
