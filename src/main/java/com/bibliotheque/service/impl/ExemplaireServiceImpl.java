@@ -1,6 +1,7 @@
 package com.bibliotheque.service.impl;
 
 import com.bibliotheque.modele.dao.ExemplaireDao;
+import com.bibliotheque.modele.entities.Bibliotheque;
 import com.bibliotheque.modele.entities.Exemplaire;
 import com.bibliotheque.service.ExemplaireService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +50,14 @@ public class ExemplaireServiceImpl implements ExemplaireService {
     }
 
     @Override
-    public Exemplaire emprunterExemplaire(Exemplaire exemplaire) {
-        Exemplaire exemplaireEmprunte = exemplaire;
+    public String emprunterExemplaire(Exemplaire exemplaire) {
+        Exemplaire exemplaireEmprunte = exemplaireDao.findByExemplaireId(exemplaire.getExemplaireId());
+        exemplaireEmprunte.setUsager(exemplaire.getUsager());
         exemplaireEmprunte.setDisponible(false);
         exemplaireEmprunte.setProlongation(false);
         exemplaireEmprunte =modificationDateEtProlongation(exemplaireEmprunte);
         exemplaireDao.save(exemplaireEmprunte);
-        return exemplaireEmprunte;
+        return String.valueOf(exemplaireEmprunte.getDateFin());
     }
 
 

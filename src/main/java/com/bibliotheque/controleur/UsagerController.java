@@ -33,4 +33,10 @@ public class UsagerController {
         List<Usager> listeUsager = usagerService.listerUsager();
         return listeUsager;
     }
+
+    @GetMapping("/chercher-usager/{identifiant}")
+    public Usager chercherUsager(@PathVariable String identifiant){
+        Usager usager = usagerService.chercherUsagerParIdentifiant(identifiant);
+        return usager;
+    }
 }

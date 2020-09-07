@@ -9,5 +9,5 @@ public interface ExemplaireService {
     List<Exemplaire> mesEmprunts(Integer usagerId);
     List<Exemplaire> listerEmprunts();
     void rendreEmprunt(Integer exemplaireId);
-    Exemplaire emprunterExemplaire(Exemplaire exemplaire);
+    String emprunterExemplaire(Exemplaire exemplaire);
 }

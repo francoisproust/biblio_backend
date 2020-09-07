@@ -8,4 +8,6 @@ public interface UsagerService {
     void ajouterUsager(Usager usager);
     Boolean verifierUsager(Usager usager);
     List<Usager> listerUsager();
+    Usager chercherUsagerParIdentifiant(String identifiant);
+    Usager chercherParUsagerId(Integer usagerId);
 }

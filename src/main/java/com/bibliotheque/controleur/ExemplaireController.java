@@ -1,7 +1,9 @@
 package com.bibliotheque.controleur;
 
 import com.bibliotheque.modele.entities.Exemplaire;
+import com.bibliotheque.modele.entities.Usager;
 import com.bibliotheque.service.ExemplaireService;
+import com.bibliotheque.service.UsagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,8 @@ import java.util.List;
 public class ExemplaireController {
     @Autowired
     ExemplaireService exemplaireService;
+    @Autowired
+    UsagerService usagerService;
 
     @GetMapping("/prolonger/{exemplaireId}")
     public Exemplaire prolongerEmprunt(@PathVariable Integer exemplaireId){
@@ -37,9 +41,10 @@ public class ExemplaireController {
         return "l'exemplaire est rendu";
     }
 
-    @PostMapping("/emprunter")
-    public Exemplaire emprunterExemplaire(@RequestBody Exemplaire exemplaire){
-        exemplaireService.emprunterExemplaire(exemplaire);
-        return exemplaire;
+    @PostMapping("/emprunter/{usagerId}")
+    public String emprunterExemplaire(@RequestBody Exemplaire exemplaire, @PathVariable Integer usagerId){
+        exemplaire.setUsager(usagerService.chercherParUsagerId(usagerId));
+        String retour = "La date de retour de l'exemplaire est le : " + exemplaireService.emprunterExemplaire(exemplaire);
+        return retour;
     }
 }

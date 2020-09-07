@@ -3,9 +3,9 @@ package com.bibliotheque.service.impl;
 import java.math.BigInteger;
 
 public class OuvrageFromCriterias {
-    private String nom ="";
-    private String auteur = "";
-    private BigInteger isbn = null;
+    private String nom;
+    private String auteur;
+    private BigInteger isbn;
 
     public String getNom() {
         return nom;

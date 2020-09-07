@@ -2,6 +2,7 @@ package com.bibliotheque.modele.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,7 +30,8 @@ public class Exemplaire implements Serializable {
     private Usager usager;
 
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
+    @JsonIgnoreProperties({"exemplaires"})
     @JoinColumn(name = "ouvrage_id")
     private Ouvrage ouvrage;
 

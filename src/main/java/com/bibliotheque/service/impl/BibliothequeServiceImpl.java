@@ -18,4 +18,6 @@ public class BibliothequeServiceImpl implements BibliothequeService {
         List<Bibliotheque> bibliotheques = bibliothequeDao.findAll();
         return bibliotheques;
     }
+
+
 }
