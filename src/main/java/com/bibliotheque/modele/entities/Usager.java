@@ -22,6 +22,8 @@ public class Usager implements Serializable {
     private String identifiant;
     @Column (name = "password",nullable = false,length = 32)
     private String password;
+    @Column(name="email",nullable = false,length = 64)
+    private String email;
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "type_id")
@@ -36,6 +38,14 @@ public class Usager implements Serializable {
 
     public void setUsagerId(Integer usagerId) {
         this.usagerId = usagerId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNom() {

@@ -10,4 +10,5 @@ public interface ExemplaireService {
     List<Exemplaire> listerEmprunts();
     void rendreEmprunt(Integer exemplaireId);
     String emprunterExemplaire(Exemplaire exemplaire);
+    List<String> listerEmail();
 }

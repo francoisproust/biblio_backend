@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +59,17 @@ public class ExemplaireServiceImpl implements ExemplaireService {
         exemplaireEmprunte =modificationDateEtProlongation(exemplaireEmprunte);
         exemplaireDao.save(exemplaireEmprunte);
         return String.valueOf(exemplaireEmprunte.getDateFin());
+    }
+
+    @Override
+    public List<String> listerEmail() {
+        List<String> email = new ArrayList<>();
+        List<Exemplaire> exemplaires = exemplaireDao.findAllByDateFinBefore(Date.valueOf(LocalDate.now()));
+        for (int i = 0; i<exemplaires.size();i++){
+            String adresse = exemplaires.get(i).getUsager().getEmail();
+            email.add(adresse);
+        }
+        return email;
     }
 
 

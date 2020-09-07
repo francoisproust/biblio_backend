@@ -7,6 +7,7 @@ import com.bibliotheque.service.UsagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -46,5 +47,12 @@ public class ExemplaireController {
         exemplaire.setUsager(usagerService.chercherParUsagerId(usagerId));
         String retour = "La date de retour de l'exemplaire est le : " + exemplaireService.emprunterExemplaire(exemplaire);
         return retour;
+    }
+
+    @GetMapping("/lister-retard")
+    public List<String> listeMail(){
+        List<String> email =new ArrayList<>();
+        email = exemplaireService.listerEmail();
+        return email;
     }
 }
