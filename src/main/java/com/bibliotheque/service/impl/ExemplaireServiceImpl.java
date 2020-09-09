@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,8 +82,16 @@ public class ExemplaireServiceImpl implements ExemplaireService {
 
 
     private Exemplaire modificationDateEtProlongation(Exemplaire exemplaire){
-        exemplaire.setDateDebut(Date.valueOf(LocalDate.now()));
-        exemplaire.setDateFin(Date.valueOf(  LocalDate.now().plusDays(28)));
+        // gestion date de début
+        if(exemplaire.getDateDebut() == null){
+            exemplaire.setDateDebut(Date.valueOf(LocalDate.now()));
+        }
+        // gestion date de fin
+        if(exemplaire.getDateFin() == null){
+            exemplaire.setDateFin(Date.valueOf(  LocalDate.now().plusDays(28)));
+        }else{
+            exemplaire.setDateFin(Date.valueOf(exemplaire.getDateFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(28)));
+        }
         return exemplaire;
     }
 }
